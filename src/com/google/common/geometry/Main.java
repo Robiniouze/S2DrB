@@ -113,13 +113,32 @@ public class Main {
         boolean containment = true;
         for (int i=0; i<maxCellValues.length;i++) {
             containment = containment && geojsonToS2CellUnion(someJason,minLevels[i],maxCellValues[i]).contains(outerBorderlinePoint);
-            System.out.println(containment);
         }
         assertFalse(containment);
     }
 
     public static void testInnerPointNormalCovering(S2Point innerPoint) {
         assertTrue(geojsonToS2CellUnion(someJason).contains(innerPoint));
+    }
+
+    public static void testInnerPointNormalCovering(List<S2Point> innerPoints) {
+        for(S2Point innerPoint : innerPoints) {
+            assertTrue(geojsonToS2CellUnion(someJason).contains(innerPoint));
+        }
+    }
+
+    public static void testTrulyOuterPoint(S2Point outerPoint) {
+        assertFalse(geojsonToS2CellUnion(someJason).contains(outerPoint));
+    }
+
+    public static void testTrulyOuterPoint(List<S2Point> outerPoints) {
+        for(S2Point outerPoint : outerPoints) {
+            assertFalse(geojsonToS2CellUnion(someJason).contains(outerPoint));
+        }
+    }
+
+    public static void handleMultiPolygons() {// OR NOT ???
+
     }
 
     public static void someRandomChecks() {
@@ -381,6 +400,7 @@ public class Main {
     }
 
         public static void main(String[] args) {
+            //someRandomChecks();
             int[] maxCellValues = {1,1,4,8,32,128,512};
             int[] minLevels = {5,10,15,16,18,20,22};
             //int[] maxCellValues = {1,1,4,8,32,128,512,1024};
@@ -390,7 +410,7 @@ public class Main {
 
 
 
-            //someRandomChecks();
+
 
             // there can be several coordinates fields
             // there can be polygon or multipolygon types
@@ -444,15 +464,30 @@ public class Main {
 //                //newS2CellUnion.get
 //                System.out.println(newS2CellUnion.cellIds());
 
-                S2Point someSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963));
-                S2Point otherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685));
-                S2Point otherOtherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198));
-                S2Point borderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501));
 
-                S2Point supposedlyOuterPoint = new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971));
-                S2Point otherSupposedlyOuterPoint = new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539));
+                List<S2Point> innerPoints = new ArrayList<>();
+                List<S2Point> outerPoints = new ArrayList<>();
+                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963)));
+                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685)));
+                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198)));
+                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501)));
 
-                S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
+                testInnerPointNormalCovering(innerPoints);
+
+                outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971)));
+                outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539)));
+
+                testTrulyOuterPoint(outerPoints);
+
+//                S2Point someSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963));
+//                S2Point otherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685));
+//                S2Point otherOtherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198));
+//                S2Point borderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501));
+
+//                S2Point supposedlyOuterPoint = new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971));
+//                S2Point otherSupposedlyOuterPoint = new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539));
+//
+//                S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
 
 //                assertTrue(newS2CellUnion.contains(someSupposedlyInnerPoint));
 //                assertTrue(newS2CellUnion.contains(otherSupposedlyInnerPoint));
