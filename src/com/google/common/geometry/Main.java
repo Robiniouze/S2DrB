@@ -456,8 +456,6 @@ public class Main {
 //                S2Polygon newS2Polygon = new S2Polygon(newS2Loop);
 //
 //
-//                //how is the area measured ?
-//
 //                S2RegionCoverer newCoverer = new S2RegionCoverer();
 //                S2CellUnion newS2CellUnion = newCoverer.getCovering(newS2Polygon); //S2RegionCoverer.getCovering(newS2Polygon);
 //                //System.out.println(newS2CellUnion.exactArea());

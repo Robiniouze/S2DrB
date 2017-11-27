@@ -17,8 +17,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-317">
-              <caret line="99" column="69" lean-forward="false" selection-start-line="99" selection-start-column="69" selection-end-line="99" selection-end-column="69" />
+            <state relative-caret-position="331">
+              <caret line="457" column="0" lean-forward="false" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
@@ -877,8 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="99" column="69" lean-forward="false" selection-start-line="99" selection-start-column="69" selection-end-line="99" selection-end-column="69" />
+        <state relative-caret-position="331">
+          <caret line="457" column="0" lean-forward="false" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
