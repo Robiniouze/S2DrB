@@ -98,23 +98,6 @@ public class Main {
     }
 
     public static S2CellUnion geojsonToS2CellUnion(String someJson) {
-//        Gson gson = new GsonBuilder().create();
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        Polygon polygon = new Polygon();
-//        try {
-//            polygon = objectMapper.readValue(someJson, Polygon.class);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        //assertThat(!polygon.getCoordinates().equals(Collections.emptyList()));
-//        // is it a deep or shallow equal ?
-//
-//        List<S2Point> littleS2PointList = new ArrayList<>();
-//        for (org.geojson.LngLatAlt littlePoint : polygon.getCoordinates().get(0)) {
-//            littleS2PointList.add(new S2Point(S2LatLng.fromDegrees(littlePoint.getLatitude(),littlePoint.getLongitude())));
-//        }
-//        S2Loop newS2Loop = new S2Loop(littleS2PointList);
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         return newCoverer.getCovering(geojsonToS2Polygon(someJson));
         //return newCoverer.getCovering(new S2Polygon(newS2Loop));
