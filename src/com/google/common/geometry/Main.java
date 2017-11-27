@@ -97,7 +97,7 @@ public class Main {
         return new S2Polygon(new S2Loop(littleS2PointList));
     }
 
-    public static S2CellUnion geojsonToS2CellUnion(String someJson) {
+    public static S2CellUnion geojsonToS2CellUnion(String someJson) { //geojsonToContainingS2CellUnion
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         return newCoverer.getCovering(geojsonToS2Polygon(someJson));
     }
@@ -107,6 +107,18 @@ public class Main {
         newCoverer.setMinLevel(minLevel);
         newCoverer.setMaxCells(maxCells);
         return newCoverer.getCovering(geojsonToS2Polygon(someJson));
+    }
+
+    public static S2CellUnion geojsonToInteriorS2CellUnion(String someJson) {
+        S2RegionCoverer newCoverer = new S2RegionCoverer();
+        return newCoverer.getInteriorCovering(geojsonToS2Polygon(someJson));
+    }
+
+    public static S2CellUnion geojsonToInteriorS2CellUnion(String someJson, int minLevel, int maxCells) {
+        S2RegionCoverer newCoverer = new S2RegionCoverer();
+        newCoverer.setMinLevel(minLevel);
+        newCoverer.setMaxCells(maxCells);
+        return newCoverer.getInteriorCovering(geojsonToS2Polygon(someJson));
     }
 
     public static void testThatOuterBorderlinePointOutsideOfNormalCovering(int[] minLevels,int[] maxCellValues, S2Point outerBorderlinePoint) {
@@ -131,15 +143,25 @@ public class Main {
         assertFalse(geojsonToS2CellUnion(someJason).contains(outerPoint));
     }
 
-    public static void testTrulyOuterPoint(List<S2Point> outerPoints) {
+    public static void testTrulyOuterPoint(List<S2Point> outerPoints) { //if the point is too close, use the testThatOuterBorderlinePointOutsideOfNormalCovering function
         for(S2Point outerPoint : outerPoints) {
             assertFalse(geojsonToS2CellUnion(someJason).contains(outerPoint));
         }
     }
 
-    public static void handleMultiPolygons() {// OR NOT ???
-
+    public static void testOuterPointInteriorCovering(S2Point outerPoint) {
+            assertFalse(geojsonToInteriorS2CellUnion(someJason).contains(outerPoint));
     }
+
+    public static void testOuterPointInteriorCovering(List<S2Point> outerPoints) { //
+        for(S2Point outerPoint : outerPoints) {
+           assertFalse(geojsonToInteriorS2CellUnion(someJason).contains(outerPoint));
+        }
+    }
+
+//    public static void handleMultiPolygons() {// OR NOT ???
+//
+//    }
 
     public static void someRandomChecks() {
         System.out.println("TESTS");
@@ -408,8 +430,28 @@ public class Main {
             S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
             testThatOuterBorderlinePointOutsideOfNormalCovering(minLevels,maxCellValues,borderlineOuterPoint);
 
+            List<S2Point> innerPoints = new ArrayList<>();
+            List<S2Point> outerPoints = new ArrayList<>();
+            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963)));
+            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685)));
+            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198)));
+            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501)));
+
+            testInnerPointNormalCovering(innerPoints);
+
+            outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971)));
+            outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539)));
+
+            testTrulyOuterPoint(outerPoints);
+
+            testOuterPointInteriorCovering(borderlineOuterPoint);
+
+            testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94407198637549,-118.38935852050781)));
+            testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94069641990671,-118.37576240301132)));
 
 
+            // test that the Area Ratios are correct? how to do that...
+            // ???
 
 
             // there can be several coordinates fields
@@ -465,19 +507,7 @@ public class Main {
 //                System.out.println(newS2CellUnion.cellIds());
 
 
-                List<S2Point> innerPoints = new ArrayList<>();
-                List<S2Point> outerPoints = new ArrayList<>();
-                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963)));
-                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685)));
-                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198)));
-                innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501)));
 
-                testInnerPointNormalCovering(innerPoints);
-
-                outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971)));
-                outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539)));
-
-                testTrulyOuterPoint(outerPoints);
 
 //                S2Point someSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963));
 //                S2Point otherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685));
