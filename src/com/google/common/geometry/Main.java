@@ -121,10 +121,26 @@ public class Main {
         return newCoverer.getInteriorCovering(geojsonToS2Polygon(someJson));
     }
 
-    public static void testThatOuterBorderlinePointOutsideOfNormalCovering(int[] minLevels,int[] maxCellValues, S2Point outerBorderlinePoint) {
+    public static void testInnerBorderlinePointInsideInteriorCovering(int[] minLevels,int[] maxCellValues, S2Point innerBorderlinePoint) {
+        boolean containment = false;
+        for (int i=0; i<maxCellValues.length;i++) {
+            containment = containment || geojsonToInteriorS2CellUnion(someJason, minLevels[i], maxCellValues[i]).contains(innerBorderlinePoint);
+//            System.out.println(containment);
+//            System.out.println(minLevels[i]);
+            if (containment) {
+                break;
+            }
+        }
+        assertTrue(containment);
+    }
+
+    public static void testThatOuterBorderlinePointOutsideNormalCovering(int[] minLevels,int[] maxCellValues, S2Point outerBorderlinePoint) {
         boolean containment = true;
         for (int i=0; i<maxCellValues.length;i++) {
             containment = containment && geojsonToS2CellUnion(someJason,minLevels[i],maxCellValues[i]).contains(outerBorderlinePoint);
+            if (!containment) {
+                break;
+            }
         }
         assertFalse(containment);
     }
@@ -428,7 +444,17 @@ public class Main {
             //int[] maxCellValues = {1,1,4,8,32,128,512,1024};
             //int[] minLevels = {5,10,15,16,18,20,22,23};
             S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
-            testThatOuterBorderlinePointOutsideOfNormalCovering(minLevels,maxCellValues,borderlineOuterPoint);
+            S2Point borderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94068751909308,-118.37578922510147));
+
+            S2Point slightlyLessBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.940667492258996,-118.37584555149077));
+
+            S2Point notThatBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.940634114191745,-118.37592333555222));
+
+            S2Point notReallyBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94044942198306,-118.37627738714218));
+
+            S2Point notBorderlineAtAllInnerPoint = new S2Point(S2LatLng.fromDegrees(33.93937241365318,-118.37807178497313));
+
+            testThatOuterBorderlinePointOutsideNormalCovering(minLevels,maxCellValues,borderlineOuterPoint);
 
             List<S2Point> innerPoints = new ArrayList<>();
             List<S2Point> outerPoints = new ArrayList<>();
@@ -449,6 +475,28 @@ public class Main {
             testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94407198637549,-118.38935852050781)));
             testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94069641990671,-118.37576240301132)));
 
+//            int[] maxIntCovCellValues = {4,8,32,128,512,2048};
+//            int[] minIntCovLevels = {15,16,18,20,22,24};
+
+//            int[] maxIntCovCellValues = {1200,19200,307200,4915200,78643200};
+//            int[] minIntCovLevels = {16,18,20,22,24};
+
+//            int[] maxIntCovCellValues = {80,20480};
+//            int[] minIntCovLevels = {14,16};
+
+            int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+            int[] minIntCovLevels = {12,14,15,16,17,18};
+
+//            int[] maxIntCovCellValues = {20480};
+//            int[] minIntCovLevels = {16};
+
+            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,slightlyLessBorderlineInnerPoint);
+            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,notBorderlineAtAllInnerPoint);
+            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,slightlyLessBorderlineInnerPoint);
+
+            testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,borderlineInnerPoint);
+
+            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,borderlineInnerPoint);
 
             // test that the Area Ratios are correct? how to do that...
             // ???
