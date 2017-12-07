@@ -125,8 +125,6 @@ public class Main {
         boolean containment = false;
         for (int i=0; i<maxCellValues.length;i++) {
             containment = containment || geojsonToInteriorS2CellUnion(someJason, minLevels[i], maxCellValues[i]).contains(innerBorderlinePoint);
-//            System.out.println(containment);
-//            System.out.println(minLevels[i]);
             if (containment) {
                 break;
             }
@@ -175,9 +173,95 @@ public class Main {
         }
     }
 
+    public static double[] getAreaRatiosIntCov(int[] maxCellValues, int[] minLevels, String someJson) {
+        double[] areaRatios = new double[maxCellValues.length];
+        for (int i=0;i<maxCellValues.length;i++) {
+            areaRatios[i] = geojsonToInteriorS2CellUnion(someJson, minLevels[i], maxCellValues[i]).exactArea()/geojsonToS2Polygon(someJson).getArea();
+        }
+        return areaRatios;
+    }
+
+    public static double[] getAreaRatiosNormCov(int[] maxCellValues, int[] minLevels, String someJson) {
+        double[] areaRatios = new double[maxCellValues.length];
+        for (int i=0;i<maxCellValues.length;i++) {
+            areaRatios[i] = geojsonToS2CellUnion(someJson, minLevels[i], maxCellValues[i]).exactArea()/geojsonToS2Polygon(someJson).getArea();
+        }
+        return areaRatios;
+    }
+
+    public static void testContainments() {
+        int[] maxCellValues = {1,1,4,8,32,128,512};
+        int[] minLevels = {5,10,15,16,18,20,22};
+        S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
+        S2Point borderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94068751909308,-118.37578922510147));
+        S2Point slightlyLessBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.940667492258996,-118.37584555149077));
+        S2Point notThatBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.940634114191745,-118.37592333555222));
+        S2Point notReallyBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94044942198306,-118.37627738714218));
+        S2Point notBorderlineAtAllInnerPoint = new S2Point(S2LatLng.fromDegrees(33.93937241365318,-118.37807178497313));
+        testThatOuterBorderlinePointOutsideNormalCovering(minLevels,maxCellValues,borderlineOuterPoint);
+        List<S2Point> innerPoints = new ArrayList<>();
+        List<S2Point> outerPoints = new ArrayList<>();
+        innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963)));
+        innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685)));
+        innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198)));
+        innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501)));
+        testInnerPointNormalCovering(innerPoints);
+        outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971)));
+        outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539)));
+        testTrulyOuterPoint(outerPoints);
+        testOuterPointInteriorCovering(borderlineOuterPoint);
+        testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94407198637549,-118.38935852050781)));
+        testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94069641990671,-118.37576240301132)));
+        int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+        int[] minIntCovLevels = {12,14,15,16,17,18};
+        testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,borderlineInnerPoint);
+    }
+
 //    public static void handleMultiPolygons() {// OR NOT ???
 //
 //    }
+
+    public static double computeCellArea(S2Cell s2Cell) {
+        return computeTriangleArea(s2Cell.getVertex(0),s2Cell.getVertex(1),s2Cell.getVertex(2))
+                + computeTriangleArea(s2Cell.getVertex(0),s2Cell.getVertex(2),s2Cell.getVertex(3));
+    }
+
+    public static double computeTriangleArea(S2Point a, S2Point b, S2Point c) {
+        final double sa = b.angle(c);
+        final double sb = c.angle(a);
+        final double sc = a.angle(b);
+        final double s = 0.5 * (sa + sb + sc);
+        return 4*
+                Math.atan(
+                    Math.sqrt(
+                        Math.max(0.0,
+                                Math.tan(0.5*s)*Math.tan((s-sa)*0.5)*Math.tan((s-sb)*0.5)*Math.tan((s-sc)*0.5))));
+    }
+
+    public static void printAreaRatios() {
+        int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+        int[] minIntCovLevels = {12,14,15,16,17,18};
+        double[] areaRatios = getAreaRatiosIntCov(maxIntCovCellValues,minIntCovLevels,someJason);
+        for (double ratio:areaRatios) {
+            System.out.println(ratio);
+        }
+        double[] areaRatiosNormCov = getAreaRatiosNormCov(maxIntCovCellValues,minIntCovLevels,someJason);
+        for (double ratio:areaRatiosNormCov) {
+            System.out.println(ratio);
+        }
+    }
+
+    public static void checkAreasComputations() {
+        int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+        int[] minIntCovLevels = {12,14,15,16,17,18};
+        double summedArea = 0.;
+        double customArea = 0.;
+        for (int idx=0; idx<geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().size();idx++) {
+            summedArea+= (new S2Cell(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(idx))).exactArea();
+            customArea+= computeCellArea(new S2Cell(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(idx)));
+        }
+        assertEquals(summedArea,customArea,0.0000000000000001);
+    }
 
     public static void someRandomChecks() {
         System.out.println("TESTS");
@@ -438,166 +522,9 @@ public class Main {
     }
 
         public static void main(String[] args) {
-            //someRandomChecks();
-            int[] maxCellValues = {1,1,4,8,32,128,512};
-            int[] minLevels = {5,10,15,16,18,20,22};
-            //int[] maxCellValues = {1,1,4,8,32,128,512,1024};
-            //int[] minLevels = {5,10,15,16,18,20,22,23};
-            S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
-            S2Point borderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94068751909308,-118.37578922510147));
-
-            S2Point slightlyLessBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.940667492258996,-118.37584555149077));
-
-            S2Point notThatBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.940634114191745,-118.37592333555222));
-
-            S2Point notReallyBorderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94044942198306,-118.37627738714218));
-
-            S2Point notBorderlineAtAllInnerPoint = new S2Point(S2LatLng.fromDegrees(33.93937241365318,-118.37807178497313));
-
-            testThatOuterBorderlinePointOutsideNormalCovering(minLevels,maxCellValues,borderlineOuterPoint);
-
-            List<S2Point> innerPoints = new ArrayList<>();
-            List<S2Point> outerPoints = new ArrayList<>();
-            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963)));
-            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685)));
-            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198)));
-            innerPoints.add(new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501)));
-
-            testInnerPointNormalCovering(innerPoints);
-
-            outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971)));
-            outerPoints.add(new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539)));
-
-            testTrulyOuterPoint(outerPoints);
-
-            testOuterPointInteriorCovering(borderlineOuterPoint);
-
-            testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94407198637549,-118.38935852050781)));
-            testOuterPointInteriorCovering(new S2Point(S2LatLng.fromDegrees(33.94069641990671,-118.37576240301132)));
-
-//            int[] maxIntCovCellValues = {4,8,32,128,512,2048};
-//            int[] minIntCovLevels = {15,16,18,20,22,24};
-
-//            int[] maxIntCovCellValues = {1200,19200,307200,4915200,78643200};
-//            int[] minIntCovLevels = {16,18,20,22,24};
-
-//            int[] maxIntCovCellValues = {80,20480};
-//            int[] minIntCovLevels = {14,16};
-
-            int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
-            int[] minIntCovLevels = {12,14,15,16,17,18};
-
-//            int[] maxIntCovCellValues = {20480};
-//            int[] minIntCovLevels = {16};
-
-            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,slightlyLessBorderlineInnerPoint);
-            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,notBorderlineAtAllInnerPoint);
-            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,slightlyLessBorderlineInnerPoint);
-
-            testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,borderlineInnerPoint);
-
-            //testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,borderlineInnerPoint);
-
-            // test that the Area Ratios are correct? how to do that...
-            // ???
-
-
-            // there can be several coordinates fields
-            // there can be polygon or multipolygon types
-
-//            S2Point someLAX_dude_s2Point = s2PointFromGPSCoordinates(33.943623, -118.409002);
-//            Gson gson = new GsonBuilder().create();
-//            Map<String,List<List<List<Double>>>> coordinatesMap = gson.fromJson(someJason,Map.class);
-
-//            System.out.println(coordinatesMap.get("coordinates"));
-//            System.out.println(coordinatesMap.get("coordinates").getClass());
-//            System.out.println(coordinatesMap.get("coordinates").get(0));
-//            System.out.println(coordinatesMap.get("coordinates").get(0).getClass());
-//            System.out.println(coordinatesMap.get("coordinates").get(0).get(0));
-//            System.out.println(coordinatesMap.get("coordinates").get(0).get(0).getClass());
-//            System.out.println(coordinatesMap.get("coordinates").get(0).get(0).get(0));
-
-            // how to choose the right object (polygon, multipolygon, ...) given the geojson type ?
-            // is there something that does that ? or should we read the geojson beforehand to decide how we're going
-            // to deserialize it...
-
-            ///
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            try {
-////                MultiPolygon littleMultiPolygon = objectMapper.readValue(someJason,MultiPolygon.class);
-////                System.out.println(littleMultiPolygon.toString());
-//                Polygon littlePoly = objectMapper.readValue(someJason,Polygon.class);
-//                //System.out.println(littlePoly.toString());
-//                System.out.println(littlePoly.getCoordinates());
-//
-//                //
-//                System.out.println(littlePoly.getCoordinates().get(0));
-//                System.out.println(littlePoly.getCoordinates().get(0).get(0));
-//                System.out.println(littlePoly.getCoordinates().get(0).get(0).getClass());
-//                System.out.println(littlePoly.getCoordinates().get(0).get(0).getLatitude());
-//                System.out.println(littlePoly.getCoordinates().get(0).get(0).getLongitude());
-//
-//                System.out.println(littlePoly.getCoordinates().get(0).get(0).getLongitude());
-
-//                List<S2Point> littleS2PointList = new ArrayList<S2Point>();
-//                for (org.geojson.LngLatAlt littlePoint : littlePoly.getCoordinates().get(0)) {
-//                    littleS2PointList.add(new S2Point(S2LatLng.fromDegrees(littlePoint.getLatitude(),littlePoint.getLongitude())));
-//                }
-//
-//                S2Loop newS2Loop = new S2Loop(littleS2PointList);
-//                S2Polygon newS2Polygon = new S2Polygon(newS2Loop);
-//
-//
-//                S2RegionCoverer newCoverer = new S2RegionCoverer();
-//                S2CellUnion newS2CellUnion = newCoverer.getCovering(newS2Polygon); //S2RegionCoverer.getCovering(newS2Polygon);
-//                //System.out.println(newS2CellUnion.exactArea());
-//                //newS2CellUnion.get
-//                System.out.println(newS2CellUnion.cellIds());
-
-
-
-
-//                S2Point someSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94364476321219,-118.41742515563963));
-//                S2Point otherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94343115082649,-118.40575218200685));
-//                S2Point otherOtherSupposedlyInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94554054964585,-118.4001624584198));
-//                S2Point borderlineInnerPoint = new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501));
-
-//                S2Point supposedlyOuterPoint = new S2Point(S2LatLng.fromDegrees(33.96009130706897,-118.41347694396971));
-//                S2Point otherSupposedlyOuterPoint = new S2Point(S2LatLng.fromDegrees(33.95247360616282,-118.3890151977539));
-//
-//                S2Point borderlineOuterPoint = new S2Point(S2LatLng.fromDegrees(33.94582090884453,-118.39608550071718));
-
-//                assertTrue(newS2CellUnion.contains(someSupposedlyInnerPoint));
-//                assertTrue(newS2CellUnion.contains(otherSupposedlyInnerPoint));
-//                assertTrue(newS2CellUnion.contains(otherOtherSupposedlyInnerPoint));
-//                assertTrue(newS2CellUnion.contains(borderlineInnerPoint));
-//
-//                assertFalse(newS2CellUnion.contains(supposedlyOuterPoint));
-//                assertFalse(newS2CellUnion.contains(otherSupposedlyOuterPoint));
-
-                // find a scale from which the point is outside of the cell union.
-//                System.out.println("borderline outer point");
-//                System.out.println(newS2CellUnion.contains(borderlineOuterPoint));
-//
-//                System.out.println("test of outer points for various max cells values");
-//
-//                int[] maxCellValues = {1,1,4,8,32,128,512,1024};
-//                int[] minLevels = {5,10,15,16,18,20,22,23};
-//                boolean containment = true;
-//                int ctr_ = 0;
-//                List<S2RegionCoverer> regionCovererList = new ArrayList<>();
-//                List<S2CellUnion> cellUnionList = new ArrayList<>();
-//                for (int maxCellValue : maxCellValues) {
-//                    regionCovererList.add(new S2RegionCoverer());
-//                    regionCovererList.get(ctr_).setMaxCells(maxCellValue);
-//                    regionCovererList.get(ctr_).setMinLevel(minLevels[ctr_]);
-//                    cellUnionList.add(regionCovererList.get(ctr_).getCovering(newS2Polygon));
-//                    System.out.println(cellUnionList.get(ctr_).contains(borderlineOuterPoint));
-//                    containment = containment && cellUnionList.get(ctr_).contains(borderlineOuterPoint);
-//                    ctr_++;
-//                }
-//                assertFalse(containment);
-//            } catch (IOException e) {
-//                e.printStackTrace();
+            someRandomChecks();
+            testContainments();
+            printAreaRatios();
+            checkAreasComputations();
         }
 }

@@ -72,6 +72,10 @@ public strictfp class S2Point implements Comparable<S2Point> {
     return new S2Point(p1.x + p2.x, p1.y + p2.y, p1.z + p2.z);
   }
 
+  public static S2Point add(final S2Point p1, final S2Point p2, final S2Point p3) {
+    return new S2Point(p1.x + p2.x + p3.x, p1.y + p2.y + p3.y, p1.z + p2.z + p3.z);
+  }
+
   public static S2Point sub(final S2Point p1, final S2Point p2) {
     return new S2Point(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);
   }
