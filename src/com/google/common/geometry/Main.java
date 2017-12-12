@@ -35,6 +35,9 @@ public class Main {
             "[-118.4375838, 33.949583], [-118.4375838, 33.949583]]]}";
 
     //public void timePointInPolygonOperations(List<S2Cell> cellList,List<S2Point> pointList) {
+
+    //public static void timeCellInCellUnionOperations() { }
+
     public static void timePointInPolygonOperations(List<S2Cell> cellList, S2Point point) {
         System.out.println("Time per loop (in ms.):");
         int listSize = cellList.size();
@@ -55,6 +58,7 @@ public class Main {
         }
         long endTime = System.nanoTime();
         System.out.println((endTime-startTime)/(1000.*listSize));
+        System.out.println("------------------------------------------------------------------------------------------");
     }
 
     public static void timePointInCellUnionOperations(List<S2CellUnion> s2CellUnionList, S2Point s2Point) {
@@ -96,28 +100,38 @@ public class Main {
         }
         return new S2Polygon(new S2Loop(littleS2PointList));
     }
-
     public static S2CellUnion geojsonToS2CellUnion(String someJson) { //geojsonToContainingS2CellUnion
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         return newCoverer.getCovering(geojsonToS2Polygon(someJson));
     }
-
     public static S2CellUnion geojsonToS2CellUnion(String someJson, int minLevel, int maxCells) {
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         newCoverer.setMinLevel(minLevel);
         newCoverer.setMaxCells(maxCells);
         return newCoverer.getCovering(geojsonToS2Polygon(someJson));
     }
-
+    public static S2CellUnion geojsonToS2CellUnion(String someJson, int minLevel, int maxCells, int maxLevel) {
+        S2RegionCoverer newCoverer = new S2RegionCoverer();
+        newCoverer.setMinLevel(minLevel);
+        newCoverer.setMaxLevel(maxLevel);
+        newCoverer.setMaxCells(maxCells);
+        return newCoverer.getCovering(geojsonToS2Polygon(someJson));
+    }
     public static S2CellUnion geojsonToInteriorS2CellUnion(String someJson) {
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         return newCoverer.getInteriorCovering(geojsonToS2Polygon(someJson));
     }
-
     public static S2CellUnion geojsonToInteriorS2CellUnion(String someJson, int minLevel, int maxCells) {
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         newCoverer.setMinLevel(minLevel);
         newCoverer.setMaxCells(maxCells);
+        return newCoverer.getInteriorCovering(geojsonToS2Polygon(someJson));
+    }
+    public static S2CellUnion geojsonToInteriorS2CellUnion(String someJson, int minLevel, int maxCells, int maxLevel) {
+        S2RegionCoverer newCoverer = new S2RegionCoverer();
+        newCoverer.setMinLevel(minLevel);
+        newCoverer.setMaxCells(maxCells);
+        newCoverer.setMaxLevel(maxLevel);
         return newCoverer.getInteriorCovering(geojsonToS2Polygon(someJson));
     }
 
@@ -131,7 +145,6 @@ public class Main {
         }
         assertTrue(containment);
     }
-
     public static void testThatOuterBorderlinePointOutsideNormalCovering(int[] minLevels,int[] maxCellValues, S2Point outerBorderlinePoint) {
         boolean containment = true;
         for (int i=0; i<maxCellValues.length;i++) {
@@ -146,7 +159,6 @@ public class Main {
     public static void testInnerPointNormalCovering(S2Point innerPoint) {
         assertTrue(geojsonToS2CellUnion(someJason).contains(innerPoint));
     }
-
     public static void testInnerPointNormalCovering(List<S2Point> innerPoints) {
         for(S2Point innerPoint : innerPoints) {
             assertTrue(geojsonToS2CellUnion(someJason).contains(innerPoint));
@@ -156,7 +168,6 @@ public class Main {
     public static void testTrulyOuterPoint(S2Point outerPoint) {
         assertFalse(geojsonToS2CellUnion(someJason).contains(outerPoint));
     }
-
     public static void testTrulyOuterPoint(List<S2Point> outerPoints) { //if the point is too close, use the testThatOuterBorderlinePointOutsideOfNormalCovering function
         for(S2Point outerPoint : outerPoints) {
             assertFalse(geojsonToS2CellUnion(someJason).contains(outerPoint));
@@ -166,7 +177,6 @@ public class Main {
     public static void testOuterPointInteriorCovering(S2Point outerPoint) {
             assertFalse(geojsonToInteriorS2CellUnion(someJason).contains(outerPoint));
     }
-
     public static void testOuterPointInteriorCovering(List<S2Point> outerPoints) { //
         for(S2Point outerPoint : outerPoints) {
            assertFalse(geojsonToInteriorS2CellUnion(someJason).contains(outerPoint));
@@ -180,7 +190,6 @@ public class Main {
         }
         return areaRatios;
     }
-
     public static double[] getAreaRatiosNormCov(int[] maxCellValues, int[] minLevels, String someJson) {
         double[] areaRatios = new double[maxCellValues.length];
         for (int i=0;i<maxCellValues.length;i++) {
@@ -217,15 +226,10 @@ public class Main {
         testInnerBorderlinePointInsideInteriorCovering(minIntCovLevels,maxIntCovCellValues,borderlineInnerPoint);
     }
 
-//    public static void handleMultiPolygons() {// OR NOT ???
-//
-//    }
-
     public static double computeCellArea(S2Cell s2Cell) {
         return computeTriangleArea(s2Cell.getVertex(0),s2Cell.getVertex(1),s2Cell.getVertex(2))
                 + computeTriangleArea(s2Cell.getVertex(0),s2Cell.getVertex(2),s2Cell.getVertex(3));
     }
-
     public static double computeTriangleArea(S2Point a, S2Point b, S2Point c) {
         final double sa = b.angle(c);
         final double sb = c.angle(a);
@@ -250,7 +254,6 @@ public class Main {
             System.out.println(ratio);
         }
     }
-
     public static void checkAreasComputations() {
         int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
         int[] minIntCovLevels = {12,14,15,16,17,18};
@@ -261,6 +264,137 @@ public class Main {
             customArea+= computeCellArea(new S2Cell(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(idx)));
         }
         assertEquals(summedArea,customArea,0.0000000000000001);
+    }
+
+    public static void printSomeCellIDsIds() {
+        int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+        int[] minIntCovLevels = {12,14,15,16,17,18};
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(1).id());
+
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).prev().prev());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).prev());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0));
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).next());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).next().next());
+
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(1).prev().prev());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(1).prev());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(1));
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(1).next());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(1).next().next());
+
+
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).prev().prev().id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).prev().id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).next().id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).next().next().id());
+
+        System.out.println("");
+
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent().parent().parent().id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent().parent().id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent().id());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).id());
+
+        System.out.println("");
+
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent().parent().parent());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent().parent());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent());
+        System.out.println(geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0));
+    }
+
+    public static void checkThatParentContainsChild() {
+        int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+        int[] minIntCovLevels = {12,14,15,16,17,18};
+        S2CellId parentId = geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent(); //new S2CellId()
+        S2CellId childId = geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0);
+        assertTrue(parentId.contains(childId));
+    }
+
+    public static void someRandomExampleStuff() {
+        int[] maxIntCovCellValues = {5,80,320,1280,5120,20480};
+        int[] minIntCovLevels = {12,14,15,16,17,18};
+        System.out.println("");
+        S2CellId parentId = geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0).parent(); //new S2CellId()
+        S2CellId childId = geojsonToInteriorS2CellUnion(someJason, minIntCovLevels[0], maxIntCovCellValues[0]).cellIds().get(0);
+        System.out.println(parentId.toToken());
+        System.out.println(childId.toToken());
+        System.out.println("");
+        System.out.println(parentId);
+        System.out.println(S2CellId.fromToken(parentId.toToken()));
+        System.out.println(new S2CellId(parentId.id()));
+        //System.out.println(parentId.id());
+        System.out.println("");
+        System.out.println(childId);
+        System.out.println(S2CellId.fromToken(childId.toToken()));
+        System.out.println(childId.id());
+    }
+
+
+    public static void somePerformanceTests() {
+        S2Cell cell = new S2Cell(S2CellId.fromFacePosLevel(0, 0, 0)); S2Cell cell2 = new S2Cell(S2CellId.fromFacePosLevel(3, 10, 5));
+        S2Cell cell3 = new S2Cell(S2CellId.fromFacePosLevel(5, 8, 10)); List<S2Cell> cellList = Collections.nCopies(100000,cell);
+        //cellList.addAll(Collections.nCopies(10000,cell2));
+        timePointInPolygonOperations(cellList,S2.origin());
+        List<S2Cell> cellList2 = Collections.nCopies(100000,cell2);
+        timePointInPolygonOperations(cellList2,S2.origin());
+        List<S2Cell> cellList3 = Collections.nCopies(100000,cell3);
+        timePointInPolygonOperations(cellList3,S2.origin());
+
+        timePointInPolygonOperations(cellList3,S2.origin().ortho());
+
+        List<S2Cell> newList = ListUtils.union(cellList,cellList2);
+        timePointInPolygonOperations(newList,S2.origin());
+        S2CellId bigCell = S2CellId.fromFacePosLevel(3, 0, 0);
+        S2CellId smallCell = S2CellId.fromFacePosLevel(3, 0, 5);
+        S2CellId otherSmallCell = S2CellId.fromFacePosLevel(3, 1, 5);
+        S2CellId otherOtherSmallCell = S2CellId.fromFacePosLevel(3, 999000000, 1);
+
+        timeCellInCellOperations(List.of(new S2Cell(bigCell)),new S2Cell(otherOtherSmallCell));
+        timeCellInCellOperations(List.of(new S2Cell(bigCell)),new S2Cell(otherSmallCell));
+
+        S2RegionCoverer s2RegionCoverer = new S2RegionCoverer();
+        S2Loop s2Loop = new S2Loop(List.of(S2.origin().ortho(),S2.origin(),new S2Point(1,1,0),new S2Point(4,5,0)));
+        S2Polygon s2Polygon = new S2Polygon(s2Loop);
+
+        // by default min and max levels are 0 and 30, change that for that case
+        s2RegionCoverer.setMinLevel(3);
+        s2RegionCoverer.setMaxLevel(5);
+        System.out.println("Min and Max levels:");
+        System.out.println(s2RegionCoverer.minLevel());
+        System.out.println(s2RegionCoverer.maxLevel());
+
+        S2CellUnion s2CellUnion = s2RegionCoverer.getInteriorCovering(s2Polygon);
+
+        System.out.println("Operation with 8 cells");
+        timePointInCellUnionAvg(s2CellUnion,new S2Point(1,1,0));
+
+        // -- check the same operation with more cells --
+        s2RegionCoverer.setMaxCells(30);
+        S2CellUnion widerS2CellUnion = s2RegionCoverer.getInteriorCovering(s2Polygon);
+        System.out.println("Operation with 30 cells");
+        timePointInCellUnionAvg(widerS2CellUnion,new S2Point(1,1,0));
+    }
+
+    public static void testVaryingNumberOfCells() { // varying the number of cells - the levels being fixed
+        int level=20;
+        int maxCells=10000;
+        S2Point testPoint = new S2Point(S2LatLng.fromDegrees(33.94554499979908,-118.39641809463501));
+        S2CellUnion s2CellUnion = geojsonToS2CellUnion(someJason,level,maxCells,level);
+        S2CellUnion s2CUSample = new S2CellUnion();
+        timePointInCellUnionAvg(s2CUSample,testPoint);
+        System.out.println(s2CUSample.contains(testPoint));
+        System.out.println(s2CellUnion.contains(testPoint));
+        //System.out.println(s2CellUnion.cellIds().size());
+        for (int i=0;i<115;i++) {
+            System.out.println("Number of cells:");
+            System.out.println(20*i+1);
+            s2CUSample.initFromCellIds(new ArrayList<>(s2CellUnion.cellIds().subList(1202-10*i,1203+10*i)));
+            timePointInCellUnionAvg(s2CUSample,testPoint);
+        }
     }
 
     public static void someRandomChecks() {
@@ -522,9 +656,17 @@ public class Main {
     }
 
         public static void main(String[] args) {
-            someRandomChecks();
-            testContainments();
-            printAreaRatios();
-            checkAreasComputations();
+//            someRandomChecks();
+//            testContainments();
+//            printAreaRatios();
+//            checkAreasComputations();
+
+            //printSomeCellIDsIds();
+            //checkThatParentContainsChild();
+
+            //someRandomExampleStuff();
+            //somePerformanceTests();
+            testVaryingNumberOfCells();
+
         }
 }

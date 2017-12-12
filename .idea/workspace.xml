@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/Main.class" afterPath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/google/common/geometry/Main.java" afterPath="$PROJECT_DIR$/src/com/google/common/geometry/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/google/common/geometry/S2Point.java" afterPath="$PROJECT_DIR$/src/com/google/common/geometry/S2Point.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,70 +16,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="S2Cell.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Cell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="379" column="0" lean-forward="true" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
+              <folding>
+                <element signature="e#13270#13271#0" expanded="true" />
+                <element signature="e#13315#13316#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="S2CellId.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellId.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="320" column="54" lean-forward="true" selection-start-line="320" selection-start-column="54" selection-end-line="320" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#34352#34353#0" expanded="true" />
+                <element signature="e#34416#34417#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="527" column="37" lean-forward="true" selection-start-line="527" selection-start-column="37" selection-end-line="527" selection-end-column="37" />
+            <state relative-caret-position="646">
+              <caret line="665" column="0" lean-forward="true" selection-start-line="665" selection-start-column="0" selection-end-line="665" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#s2PointFromGPSCoordinates#0;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToS2Polygon#0;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToS2CellUnion#0;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToS2CellUnion#1;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToS2CellUnion#2;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToInteriorS2CellUnion#0;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToInteriorS2CellUnion#1;class#Main#0" expanded="false" />
+                <element signature="method#geojsonToInteriorS2CellUnion#2;class#Main#0" expanded="false" />
+                <element signature="method#testInnerBorderlinePointInsideInteriorCovering#0;class#Main#0" expanded="false" />
+                <element signature="method#testThatOuterBorderlinePointOutsideNormalCovering#0;class#Main#0" expanded="false" />
+                <element signature="method#testInnerPointNormalCovering#0;class#Main#0" expanded="false" />
+                <element signature="method#testInnerPointNormalCovering#1;class#Main#0" expanded="false" />
+                <element signature="method#testTrulyOuterPoint#0;class#Main#0" expanded="false" />
+                <element signature="method#testTrulyOuterPoint#1;class#Main#0" expanded="false" />
+                <element signature="method#testOuterPointInteriorCovering#0;class#Main#0" expanded="false" />
+                <element signature="method#testOuterPointInteriorCovering#1;class#Main#0" expanded="false" />
+                <element signature="method#getAreaRatiosIntCov#0;class#Main#0" expanded="false" />
+                <element signature="method#getAreaRatiosNormCov#0;class#Main#0" expanded="false" />
+                <element signature="method#computeCellArea#0;class#Main#0" expanded="false" />
+                <element signature="method#computeTriangleArea#0;class#Main#0" expanded="false" />
+                <element signature="method#printAreaRatios#0;class#Main#0" expanded="false" />
+                <element signature="method#checkAreasComputations#0;class#Main#0" expanded="false" />
+                <element signature="method#printSomeCellIDsIds#0;class#Main#0" expanded="false" />
+                <element signature="method#someRandomExampleStuff#0;class#Main#0" expanded="false" />
                 <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Math.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Math.java">
+      <file leaf-file-name="S2CellUnion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellUnion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="237" column="25" lean-forward="false" selection-start-line="237" selection-start-column="25" selection-end-line="237" selection-end-column="25" />
+            <state relative-caret-position="201">
+              <caret line="61" column="14" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
               <folding>
-                <element signature="e#9127#9128#0" expanded="true" />
-                <element signature="e#9209#9210#0" expanded="true" />
+                <element signature="e#2024#2025#0" expanded="true" />
+                <element signature="e#2056#2057#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="S2Polygon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Polygon.java">
+      <file leaf-file-name="Collections.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/util/Collections.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="144" column="37" lean-forward="false" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S2Cell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Cell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5634">
-              <caret line="353" column="5" lean-forward="true" selection-start-line="353" selection-start-column="5" selection-end-line="353" selection-end-column="5" />
-              <folding>
-                <element signature="e#2466#2467#0" expanded="true" />
-                <element signature="e#2515#2516#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="355" column="33" lean-forward="true" selection-start-line="355" selection-start-column="33" selection-end-line="355" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S2Projections.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Projections.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="358" column="24" lean-forward="false" selection-start-line="358" selection-start-column="24" selection-end-line="358" selection-end-column="24" />
+            <state relative-caret-position="297">
+              <caret line="214" column="63" lean-forward="true" selection-start-line="214" selection-start-column="63" selection-end-line="214" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -89,8 +106,18 @@
       <file leaf-file-name="S2RegionCoverer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2RegionCoverer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4572">
-              <caret line="283" column="9" lean-forward="false" selection-start-line="283" selection-start-column="9" selection-end-line="283" selection-end-column="9" />
+            <state relative-caret-position="4914">
+              <caret line="302" column="0" lean-forward="false" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="S2Projections.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Projections.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6192">
+              <caret line="358" column="24" lean-forward="false" selection-start-line="358" selection-start-column="24" selection-end-line="358" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -99,7 +126,7 @@
       <file leaf-file-name="S2EdgeIndex.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2EdgeIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5202">
+            <state relative-caret-position="5148">
               <caret line="316" column="30" lean-forward="false" selection-start-line="316" selection-start-column="30" selection-end-line="316" selection-end-column="30" />
               <folding />
             </state>
@@ -109,25 +136,9 @@
       <file leaf-file-name="S2Point.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Point.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
+            <state relative-caret-position="900">
               <caret line="74" column="70" lean-forward="false" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
-              <folding>
-                <element signature="e#1691#1692#0" expanded="true" />
-                <element signature="e#1737#1738#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S2LatLng.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2LatLng.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-              <folding>
-                <element signature="e#3201#3202#0" expanded="true" />
-                <element signature="e#3221#3222#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,8 +162,6 @@
       <find>cellI</find>
       <find>atan</find>
       <find>lat</find>
-      <find>contain</find>
-      <find>contains</find>
       <find>earth</find>
       <find>sub</find>
       <find>bigC</find>
@@ -161,6 +170,12 @@
       <find>ObjectMapper</find>
       <find>volatile</find>
       <find>area</find>
+      <find>normalize</find>
+      <find>contain</find>
+      <find>rangeMin</find>
+      <find>inner</find>
+      <find>contains</find>
+      <find>innerP</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,17 +189,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/google/common/geometry/S2CellId.java" />
         <option value="$PROJECT_DIR$/src/com/google/common/geometry/S2Point.java" />
+        <option value="$USER_HOME$/Dropbox/bidder/BiddersRequestHandler" />
+        <option value="$USER_HOME$/Dropbox/bidder/java-bidder-v0" />
+        <option value="$USER_HOME$/Dropbox/bidder/java-bidder-v0.java" />
+        <option value="$PROJECT_DIR$/src/com/google/common/geometry/S2CellId.java" />
         <option value="$PROJECT_DIR$/src/com/google/common/geometry/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="201" />
-    <option name="y" value="160" />
+    <option name="x" value="522" />
+    <option name="y" value="367" />
     <option name="width" value="1398" />
-    <option name="height" value="992" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -201,9 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,14 +264,17 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/hamcrest-all-1.3.jar!/" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="findjar.last.used.dir" value="$USER_HOME$/JavaLibs/gson" />
     <property name="SearchEverywhereHistoryKey" value="s2pol&#9;FILE&#9;file:///home/robin/DrBanner/DrB_GeoProcessing/s2-geometry-library-java/src/com/google/common/geometry/S2Polygon.java&#10;getcov&#9;PSI&#9;JAVA://com.google.common.geometry.S2EdgeIndex#getCovering" />
   </component>
@@ -435,38 +453,24 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37218815" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16873315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12722372" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21881391" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2822086" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16873315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43251532" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -474,74 +478,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="22" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellUnion.java</url>
+          <line>159</line>
+          <properties class="com.google.common.geometry.S2CellUnion" method="contains">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="146" column="74" lean-forward="false" selection-start-line="146" selection-start-column="74" selection-end-line="146" selection-end-column="74" />
-          <folding>
-            <element signature="e#2466#2467#0" expanded="true" />
-            <element signature="e#2515#2516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/util/AbstractList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="65" column="43" lean-forward="false" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/google/common/geometry/S1AngleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/R2Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="34" column="3" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="146" column="74" lean-forward="false" selection-start-line="146" selection-start-column="74" selection-end-line="146" selection-end-column="74" />
-          <folding>
-            <element signature="e#2466#2467#0" expanded="true" />
-            <element signature="e#2515#2516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/google/common/geometry/S2CellTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="36" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Polygon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
@@ -554,7 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -562,10 +512,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="24" />
-          <folding>
-            <element signature="e#3201#3202#0" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -573,7 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -589,10 +535,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="81" column="17" lean-forward="false" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
-          <folding>
-            <element signature="e#1691#1692#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -602,6 +545,30 @@
           <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#s2PointFromGPSCoordinates#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2Polygon#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#1;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#2;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#1;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#2;class#Main#0" expanded="false" />
+            <element signature="method#testInnerBorderlinePointInsideInteriorCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testThatOuterBorderlinePointOutsideNormalCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testInnerPointNormalCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testInnerPointNormalCovering#1;class#Main#0" expanded="false" />
+            <element signature="method#testTrulyOuterPoint#0;class#Main#0" expanded="false" />
+            <element signature="method#testTrulyOuterPoint#1;class#Main#0" expanded="false" />
+            <element signature="method#testOuterPointInteriorCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testOuterPointInteriorCovering#1;class#Main#0" expanded="false" />
+            <element signature="method#getAreaRatiosIntCov#0;class#Main#0" expanded="false" />
+            <element signature="method#getAreaRatiosNormCov#0;class#Main#0" expanded="false" />
+            <element signature="method#computeCellArea#0;class#Main#0" expanded="false" />
+            <element signature="method#computeTriangleArea#0;class#Main#0" expanded="false" />
+            <element signature="method#printAreaRatios#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAreasComputations#0;class#Main#0" expanded="false" />
+            <element signature="method#printSomeCellIDsIds#0;class#Main#0" expanded="false" />
+            <element signature="method#someRandomExampleStuff#0;class#Main#0" expanded="false" />
             <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -618,7 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="34" column="3" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -627,8 +593,8 @@
         <state relative-caret-position="2016">
           <caret line="146" column="74" lean-forward="true" selection-start-line="146" selection-start-column="74" selection-end-line="146" selection-end-column="74" />
           <folding>
-            <element signature="e#2466#2467#0" expanded="true" />
-            <element signature="e#2515#2516#0" expanded="true" />
+            <element signature="e#13270#13271#0" expanded="true" />
+            <element signature="e#13315#13316#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,7 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -661,10 +626,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="24" />
-          <folding>
-            <element signature="e#3201#3202#0" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -672,7 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -688,10 +649,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="81" column="17" lean-forward="false" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
-          <folding>
-            <element signature="e#1691#1692#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -701,6 +659,30 @@
           <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#s2PointFromGPSCoordinates#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2Polygon#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#1;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#2;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#1;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#2;class#Main#0" expanded="false" />
+            <element signature="method#testInnerBorderlinePointInsideInteriorCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testThatOuterBorderlinePointOutsideNormalCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testInnerPointNormalCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testInnerPointNormalCovering#1;class#Main#0" expanded="false" />
+            <element signature="method#testTrulyOuterPoint#0;class#Main#0" expanded="false" />
+            <element signature="method#testTrulyOuterPoint#1;class#Main#0" expanded="false" />
+            <element signature="method#testOuterPointInteriorCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testOuterPointInteriorCovering#1;class#Main#0" expanded="false" />
+            <element signature="method#getAreaRatiosIntCov#0;class#Main#0" expanded="false" />
+            <element signature="method#getAreaRatiosNormCov#0;class#Main#0" expanded="false" />
+            <element signature="method#computeCellArea#0;class#Main#0" expanded="false" />
+            <element signature="method#computeTriangleArea#0;class#Main#0" expanded="false" />
+            <element signature="method#printAreaRatios#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAreasComputations#0;class#Main#0" expanded="false" />
+            <element signature="method#printSomeCellIDsIds#0;class#Main#0" expanded="false" />
+            <element signature="method#someRandomExampleStuff#0;class#Main#0" expanded="false" />
             <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -717,7 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="34" column="3" lean-forward="false" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,7 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -747,7 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,7 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1494">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -770,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
           <caret line="90" column="44" lean-forward="false" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1818">
           <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -812,115 +787,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellId.java">
+    <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Math.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4914">
-          <caret line="320" column="54" lean-forward="false" selection-start-line="320" selection-start-column="54" selection-end-line="320" selection-end-column="54" />
-          <folding>
-            <element signature="e#8368#8369#0" expanded="true" />
-            <element signature="e#8411#8412#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3600">
+          <caret line="237" column="25" lean-forward="false" selection-start-line="237" selection-start-column="25" selection-end-line="237" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellUnion.java">
+    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8766">
-          <caret line="524" column="42" lean-forward="false" selection-start-line="524" selection-start-column="33" selection-end-line="524" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2RegionCoverer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4572">
-          <caret line="283" column="9" lean-forward="false" selection-start-line="283" selection-start-column="9" selection-end-line="283" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2EdgeIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5202">
-          <caret line="316" column="30" lean-forward="false" selection-start-line="316" selection-start-column="30" selection-end-line="316" selection-end-column="30" />
+        <state relative-caret-position="5940">
+          <caret line="355" column="33" lean-forward="false" selection-start-line="355" selection-start-column="33" selection-end-line="355" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2LatLng.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="499">
           <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <element signature="e#3201#3202#0" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Polygon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="0">
           <caret line="144" column="37" lean-forward="false" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Long.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6228">
+          <caret line="382" column="18" lean-forward="false" selection-start-line="382" selection-start-column="17" selection-end-line="382" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2RegionCoverer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4914">
+          <caret line="302" column="0" lean-forward="false" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Projections.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="6192">
           <caret line="358" column="24" lean-forward="false" selection-start-line="358" selection-start-column="24" selection-end-line="358" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2EdgeIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5148">
+          <caret line="316" column="30" lean-forward="false" selection-start-line="316" selection-start-column="30" selection-end-line="316" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Point.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
+        <state relative-caret-position="900">
           <caret line="74" column="70" lean-forward="false" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/bidder/java-bidder-v0" />
+    <entry file="file://$USER_HOME$/Dropbox/bidder/py-inc_bidder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8388">
+          <caret line="489" column="69" lean-forward="false" selection-start-line="489" selection-start-column="69" selection-end-line="489" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/bidder/java-bidder-v0.java" />
+    <entry file="file://$USER_HOME$/client-drbanner/bidding/py-bidder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="99" column="61" lean-forward="true" selection-start-line="99" selection-start-column="61" selection-end-line="99" selection-end-column="61" />
           <folding>
-            <element signature="e#1691#1692#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Math.java">
+    <entry file="file://$USER_HOME$/Dropbox/bidder/BiddersRequestHandler">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="237" column="25" lean-forward="false" selection-start-line="237" selection-start-column="25" selection-end-line="237" selection-end-column="25" />
-          <folding>
-            <element signature="e#9127#9128#0" expanded="true" />
-            <element signature="e#9209#9210#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="54">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2.java">
+    <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/util/Collections.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="355" column="33" lean-forward="true" selection-start-line="355" selection-start-column="33" selection-end-line="355" selection-end-column="33" />
+        <state relative-caret-position="297">
+          <caret line="214" column="63" lean-forward="true" selection-start-line="214" selection-start-column="63" selection-end-line="214" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5634">
-          <caret line="353" column="5" lean-forward="true" selection-start-line="353" selection-start-column="5" selection-end-line="353" selection-end-column="5" />
+        <state relative-caret-position="54">
+          <caret line="379" column="0" lean-forward="true" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
           <folding>
-            <element signature="e#2466#2467#0" expanded="true" />
-            <element signature="e#2515#2516#0" expanded="true" />
+            <element signature="e#13270#13271#0" expanded="true" />
+            <element signature="e#13315#13316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="320" column="54" lean-forward="true" selection-start-line="320" selection-start-column="54" selection-end-line="320" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#34352#34353#0" expanded="true" />
+            <element signature="e#34416#34417#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellUnion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="61" column="14" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+          <folding>
+            <element signature="e#2024#2025#0" expanded="true" />
+            <element signature="e#2056#2057#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="527" column="37" lean-forward="true" selection-start-line="527" selection-start-column="37" selection-end-line="527" selection-end-column="37" />
+        <state relative-caret-position="646">
+          <caret line="665" column="0" lean-forward="true" selection-start-line="665" selection-start-column="0" selection-end-line="665" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#s2PointFromGPSCoordinates#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2Polygon#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#1;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToS2CellUnion#2;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#0;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#1;class#Main#0" expanded="false" />
+            <element signature="method#geojsonToInteriorS2CellUnion#2;class#Main#0" expanded="false" />
+            <element signature="method#testInnerBorderlinePointInsideInteriorCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testThatOuterBorderlinePointOutsideNormalCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testInnerPointNormalCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testInnerPointNormalCovering#1;class#Main#0" expanded="false" />
+            <element signature="method#testTrulyOuterPoint#0;class#Main#0" expanded="false" />
+            <element signature="method#testTrulyOuterPoint#1;class#Main#0" expanded="false" />
+            <element signature="method#testOuterPointInteriorCovering#0;class#Main#0" expanded="false" />
+            <element signature="method#testOuterPointInteriorCovering#1;class#Main#0" expanded="false" />
+            <element signature="method#getAreaRatiosIntCov#0;class#Main#0" expanded="false" />
+            <element signature="method#getAreaRatiosNormCov#0;class#Main#0" expanded="false" />
+            <element signature="method#computeCellArea#0;class#Main#0" expanded="false" />
+            <element signature="method#computeTriangleArea#0;class#Main#0" expanded="false" />
+            <element signature="method#printAreaRatios#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAreasComputations#0;class#Main#0" expanded="false" />
+            <element signature="method#printSomeCellIDsIds#0;class#Main#0" expanded="false" />
+            <element signature="method#someRandomExampleStuff#0;class#Main#0" expanded="false" />
             <element signature="method#someRandomChecks#0;class#Main#0" expanded="false" />
           </folding>
         </state>
