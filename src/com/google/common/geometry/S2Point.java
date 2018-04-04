@@ -42,9 +42,7 @@ public strictfp class S2Point implements Comparable<S2Point> {
     double x_= r * Math.cos(s2LatLng.lng().radians()) * Math.cos(s2LatLng.lat().radians()); // x = r cos (theta) sin (phi)
     double y_= r * Math.sin(s2LatLng.lng().radians()) * Math.cos(s2LatLng.lat().radians());     // y = r sin (theta) sin (phi)
     double z_= r * Math.sin(s2LatLng.lat().radians());     // z = r cos (phi)
-    this.x = x_;
-    this.y = y_;
-    this.z = z_;
+    this.x = x_; this.y = y_; this.z = z_;
   }
 
   public static S2Point minus(S2Point p1, S2Point p2) {

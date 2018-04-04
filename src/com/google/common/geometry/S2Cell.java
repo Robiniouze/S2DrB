@@ -30,6 +30,11 @@ public final strictfp class S2Cell implements S2Region {
   byte face;
   byte level;
   byte orientation;
+
+  public S2CellId getCellId() {
+    return cellId;
+  }
+
   S2CellId cellId;
   double[][] uv = new double[2][2];
 
