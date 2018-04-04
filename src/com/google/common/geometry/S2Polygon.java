@@ -153,7 +153,7 @@ public final strictfp class S2Polygon implements S2Region, Comparable<S2Polygon>
       insertLoop(loop, null, loopMap);
       this.numVertices += loop.numVertices();
     }
-    loops.clear();
+    //loops.clear();
 
     // Sort all of the lists of loops; in this way we guarantee a total ordering
     // on loops in the polygon. Loops will be sorted by their natural ordering,
@@ -1166,4 +1166,9 @@ public final strictfp class S2Polygon implements S2Region, Comparable<S2Polygon>
       return point.compareTo(o.point);
     }
   }
+
+  public boolean isPerforated() {
+      return this.hasHoles;
+  }
+
 }
