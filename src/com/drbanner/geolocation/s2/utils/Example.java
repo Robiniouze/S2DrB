@@ -6,6 +6,8 @@ public class Example {
     public static int DEFAULT_MAX_CELLS = 9999;
     public static int DEFAULT_MAX_LEVEL = 30;
 
+    public static double DEFAULT_OUTER_COVERAGE_AREA_RATIO = 1.5;
+
     public static String centralParisJason="{\n" +
             "        \"type\": \"Polygon\",\n" +
             "        \"coordinates\": [\n" +

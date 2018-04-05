@@ -84,11 +84,16 @@ public class GeojsonProcessor {
 
     @Nonnull
     public static S2CellUnion geojsonObjectListToS2Polygon(List<GeoJsonObject> geoJsonObjects) throws Exception {
-        return geojsonObjectListToS2Polygon(geoJsonObjects, DEFAULT_MIN_LEVEL,DEFAULT_MAX_CELLS,DEFAULT_MAX_LEVEL);
+        return geojsonObjectListToS2CellUnion(geoJsonObjects, DEFAULT_MIN_LEVEL,DEFAULT_MAX_CELLS,DEFAULT_MAX_LEVEL);
     }
 
     @Nonnull
-    public static S2CellUnion geojsonObjectListToS2Polygon(List<GeoJsonObject> geoJsonObjects, int minLevel, int maxCells, int maxLevel) throws Exception {
+    public static S2CellUnion geojsonObjectListToS2CellUnion(List<GeoJsonObject> geoJsonObjects) throws Exception {
+        return geojsonObjectListToS2CellUnion(geoJsonObjects,DEFAULT_MIN_LEVEL,DEFAULT_MAX_CELLS,DEFAULT_MAX_LEVEL);
+    }
+
+    @Nonnull
+    public static S2CellUnion geojsonObjectListToS2CellUnion(List<GeoJsonObject> geoJsonObjects, int minLevel, int maxCells, int maxLevel) throws Exception {
         if(geoJsonObjects.size()==0) {
             throw new Exception();
         } else if(geoJsonObjects.size()==1) {
@@ -153,8 +158,52 @@ public class GeojsonProcessor {
         return geoJsonObjects;
     }
 
+
+    //TODO
+    // allow this function to take in more geojsonObjects
+    @Nonnull
+    public static S2Polygon geojsonToS2Polygon(String someJson) throws Exception {
+        if (geojsonToGeojsonObject(someJson).size() == 1) {
+            if (geojsonToGeojsonObject(someJson).get(0) instanceof Polygon) {
+                Polygon polygon = (Polygon) (geojsonToGeojsonObject(someJson).get(0));
+                return geojsonPolygonToS2Polygon(polygon);
+            } else {
+                throw new RuntimeException();
+            }
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
+    @Nonnull
+    public static S2CellUnion geojsonToS2CellUnion(String someJson, int minLevel, int maxCells, int maxLevel) throws IOException, Exception {
+        return geojsonObjectListToS2CellUnion(geojsonToGeojsonObject(someJson), minLevel, maxCells, maxLevel);
+    }
+
     @Nonnull
     public static S2CellUnion geojsonToS2CellUnion(String someJson) throws IOException, Exception {
         return geojsonObjectListToS2Polygon(geojsonToGeojsonObject(someJson));
     }
+
+    @Nonnull
+    public static int getMaxCellsValueForConstrainedOutsideCoverage(double areaRatio, String someJson) throws Exception {
+        assert areaRatio > 1.0;
+        int maxCells = 1;
+        S2CellUnion s2CellUnion = geojsonToS2CellUnion(someJson,DEFAULT_MIN_LEVEL,maxCells,DEFAULT_MAX_LEVEL);
+        S2Polygon s2Polygon = geojsonToS2Polygon(someJson);
+        double currentAreaRatio = s2CellUnion.exactArea()/s2Polygon.getArea();
+        while (currentAreaRatio > areaRatio) {
+            //maxCells += 5;
+            maxCells += 10;
+            s2CellUnion = geojsonToS2CellUnion(someJson,DEFAULT_MIN_LEVEL,maxCells,DEFAULT_MAX_LEVEL);
+            currentAreaRatio = s2CellUnion.exactArea()/s2Polygon.getArea();
+        }
+        return maxCells;
+    }
+
+    @Nonnull
+    public static int getMaxCellsValueForConstrainedOutsideCoverage(String someJson) throws Exception {
+        return getMaxCellsValueForConstrainedOutsideCoverage(DEFAULT_OUTER_COVERAGE_AREA_RATIO,someJson);
+    }
+
 }

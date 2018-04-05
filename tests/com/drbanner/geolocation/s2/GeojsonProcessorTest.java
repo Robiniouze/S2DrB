@@ -14,6 +14,7 @@ import java.util.List;
 import static com.drbanner.geolocation.s2.utils.Example.*;
 import static com.drbanner.geolocation.s2.utils.GeojsonProcessor.geojsonToGeojsonObject;
 import static com.drbanner.geolocation.s2.utils.GeojsonProcessor.geojsonToS2CellUnion;
+import static com.drbanner.geolocation.s2.utils.GeojsonProcessor.getMaxCellsValueForConstrainedOutsideCoverage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -74,6 +75,22 @@ public class GeojsonProcessorTest {
         S2CellUnion s2CellUnion = geojsonToS2CellUnion(pointGeoJson);
         assertEquals(1,s2CellUnion.cellIds().size());
         assertEquals(S2CellId.MAX_LEVEL,s2CellUnion.cellId(0).level());
+    }
+
+    // test a geojson that uses the s2polygonbuilder
+
+    //test the outer coverage areaRatio max cells function
+
+    //TODO
+    @Test
+    public void testGetMaxCellsForConstrainedOuterCoverage() throws Exception {
+        System.out.println(getMaxCellsValueForConstrainedOutsideCoverage(someJason));
+        System.out.println(getMaxCellsValueForConstrainedOutsideCoverage(1.1,someJason));
+        System.out.println(getMaxCellsValueForConstrainedOutsideCoverage(1.01,someJason));
+
+        System.out.println(getMaxCellsValueForConstrainedOutsideCoverage(centralParisJason));
+        System.out.println(getMaxCellsValueForConstrainedOutsideCoverage(1.1,centralParisJason));
+        System.out.println(getMaxCellsValueForConstrainedOutsideCoverage(1.01,centralParisJason));
     }
 
 }
