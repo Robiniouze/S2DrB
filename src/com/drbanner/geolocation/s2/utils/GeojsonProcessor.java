@@ -2,40 +2,40 @@ package com.drbanner.geolocation.s2.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.geometry.*;
-import org.geojson.GeoJsonObject;
-import org.geojson.MultiPolygon;
-import org.geojson.Point;
-import org.geojson.Polygon;
+import org.geojson.*;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.drbanner.geolocation.s2.utils.Example.DEFAULT_MAX_CELLS;
-import static com.drbanner.geolocation.s2.utils.Example.DEFAULT_MAX_LEVEL;
-import static com.drbanner.geolocation.s2.utils.Example.DEFAULT_MIN_LEVEL;
+import static com.drbanner.geolocation.s2.utils.Example.*;
 
 public class GeojsonProcessor {
 
+    @Nonnull
     public static S2CellUnion geojsonPolygonToS2CellUnion(Polygon polygon, int minLevel, int maxCells, int maxLevel) {
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         newCoverer.setMinLevel(minLevel);
         newCoverer.setMaxLevel(maxLevel);
         newCoverer.setMaxCells(maxCells);
-        List<S2Point> littleS2PointList = new ArrayList<>();
-        for (org.geojson.LngLatAlt littlePoint : polygon.getCoordinates().get(0)) {
-            littleS2PointList.add(new S2Point(S2LatLng.fromDegrees(littlePoint.getLatitude(), littlePoint.getLongitude())));
-        }
-        return newCoverer.getCovering(new S2Polygon(new S2Loop(littleS2PointList)));
+        return newCoverer.getCovering(geojsonPolygonToS2Polygon(polygon));
     }
 
+    @Nonnull
     public static S2CellUnion geojsonMultiPolygonToS2CellUnion(MultiPolygon multiPolygon) {
         return geojsonMultiPolygonToS2CellUnion(multiPolygon, DEFAULT_MIN_LEVEL,DEFAULT_MAX_CELLS,DEFAULT_MAX_LEVEL);
     }
 
+    @Nonnull
     public static S2CellUnion geojsonMultiPolygonToS2CellUnion(MultiPolygon multiPolygon, int minLevel, int maxCells, int maxLevel) {
         S2RegionCoverer newCoverer = new S2RegionCoverer();
         newCoverer.setMinLevel(minLevel);newCoverer.setMaxLevel(maxLevel);newCoverer.setMaxCells(maxCells);
+        return newCoverer.getCovering(geojsonMultiPolygonToS2Polygon(multiPolygon));
+    }
+
+    @Nonnull
+    public static S2Polygon geojsonMultiPolygonToS2Polygon(MultiPolygon multiPolygon) {
         List<S2Loop> loops = new ArrayList<>();
         List<S2Point> coordinatesList;
         for(List<List<org.geojson.LngLatAlt>> polygonCoordinatesList : multiPolygon.getCoordinates()) {
@@ -47,17 +47,20 @@ public class GeojsonProcessor {
                 loops.add(new S2Loop(coordinatesList));
             }
         }
-        return newCoverer.getCovering(new S2Polygon(loops));
+        return new S2Polygon(loops);
     }
 
+    @Nonnull
     public static S2CellUnion geojsonObjectToS2CellUnion(GeoJsonObject geoJsonObject) {
         return geojsonObjectToS2CellUnion(geoJsonObject, DEFAULT_MIN_LEVEL,DEFAULT_MAX_CELLS,DEFAULT_MAX_LEVEL);
     }
 
+    @Nonnull
     public static S2Cell geojsonPointToS2Cell(Point point) {
         return new S2Cell(new S2Point(S2LatLng.fromDegrees(point.getCoordinates().getLatitude(),point.getCoordinates().getLongitude())));
     }
 
+    @Nonnull
     public static S2CellUnion geojsonPointToS2CellUnion(Point point) {
         S2CellUnion s2CellUnion = new S2CellUnion();
         List<S2CellId> s2CellIds = new ArrayList<>();
@@ -66,6 +69,7 @@ public class GeojsonProcessor {
         return s2CellUnion;
     }
 
+    @Nonnull
     public static S2CellUnion geojsonObjectToS2CellUnion(GeoJsonObject geoJsonObject, int minLevel, int maxCells, int maxLevel) {
         S2CellUnion s2CellUnion = new S2CellUnion();
         if(geoJsonObject instanceof Polygon) {
@@ -78,16 +82,72 @@ public class GeojsonProcessor {
         return s2CellUnion;
     }
 
-    public static S2CellUnion geojsonToS2CellUnion(String someJson) {
-        S2CellUnion s2CellUnion = new S2CellUnion();
-        ObjectMapper objectMapper = new ObjectMapper();
-        GeoJsonObject geoJsonObject;
-        try {
-            geoJsonObject = objectMapper.readValue(someJson, GeoJsonObject.class);
-            return geojsonObjectToS2CellUnion(geoJsonObject);
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Nonnull
+    public static S2CellUnion geojsonObjectListToS2Polygon(List<GeoJsonObject> geoJsonObjects) throws Exception {
+        return geojsonObjectListToS2Polygon(geoJsonObjects, DEFAULT_MIN_LEVEL,DEFAULT_MAX_CELLS,DEFAULT_MAX_LEVEL);
+    }
+
+    @Nonnull
+    public static S2CellUnion geojsonObjectListToS2Polygon(List<GeoJsonObject> geoJsonObjects, int minLevel, int maxCells, int maxLevel) throws Exception {
+        List<S2CellUnion> s2CellUnions = new ArrayList<>();
+        if(s2CellUnions.size()==0) {
+            throw new Exception();
+        } else if(s2CellUnions.size()==1) {
+            return geojsonObjectToS2CellUnion(geoJsonObjects.get(0),minLevel,maxCells,maxLevel);
+        } else {
+            //build polygons
+            S2PolygonBuilder s2PolygonBuilder = new S2PolygonBuilder();
+            for(GeoJsonObject geoJsonObject : geoJsonObjects) {
+                if(geoJsonObject instanceof Polygon) {
+                    s2PolygonBuilder.addPolygon(geojsonPolygonToS2Polygon((Polygon)(geoJsonObject)));
+                } else if(geoJsonObject instanceof MultiPolygon) {
+                    s2PolygonBuilder.addPolygon(geojsonMultiPolygonToS2Polygon((MultiPolygon) (geoJsonObject)));
+                }
+                else {
+                    throw new Exception();
+                }
+            }
+            S2RegionCoverer newCoverer = new S2RegionCoverer();
+            newCoverer.setMinLevel(minLevel);newCoverer.setMaxLevel(maxLevel);newCoverer.setMaxCells(maxCells);
+            return newCoverer.getCovering(s2PolygonBuilder.assemblePolygon());
         }
-        return s2CellUnion;
+    }
+
+    @Nonnull
+    public static S2Polygon geojsonPolygonToS2Polygon(Polygon polygon) {
+        List<S2Point> s2Points = new ArrayList<>();
+        for(List<org.geojson.LngLatAlt> polygonCoordinates : polygon.getCoordinates()) {
+            for(LngLatAlt lngLatAlt : polygonCoordinates) {
+                s2Points.add(new S2Point(S2LatLng.fromDegrees(lngLatAlt.getLatitude(), lngLatAlt.getLongitude())));
+            }
+        }
+        return new S2Polygon(new S2Loop(s2Points));
+    }
+
+    @Nonnull
+    public static List<GeoJsonObject> geojsonToGeojsonObject(String someJson) throws IOException, RuntimeException {
+        GeoJsonObject geoJsonObject = (new ObjectMapper()).readValue(someJson, GeoJsonObject.class);
+
+        if(geoJsonObject instanceof Point || geoJsonObject instanceof Polygon || geoJsonObject instanceof MultiPolygon) {
+            return List.of(geoJsonObject);
+        }
+        else if(geoJsonObject instanceof FeatureCollection) {
+            List<GeoJsonObject> geoJsonObjects = new ArrayList<>();
+            for(Feature feature : ((FeatureCollection)(geoJsonObject)).getFeatures()) {
+                GeoJsonObject currentGeoJsonObject = feature.getGeometry();
+                if(currentGeoJsonObject instanceof Point || currentGeoJsonObject instanceof Polygon || currentGeoJsonObject instanceof MultiPolygon){
+                    geoJsonObjects.add(currentGeoJsonObject);
+                }
+            }
+            return geoJsonObjects;
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+    @Nonnull
+    public static S2CellUnion geojsonToS2CellUnion(String someJson) throws IOException, Exception {
+        return geojsonObjectListToS2Polygon(geojsonToGeojsonObject(someJson));
     }
 }

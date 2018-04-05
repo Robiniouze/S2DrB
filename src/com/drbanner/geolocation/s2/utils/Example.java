@@ -2,7 +2,6 @@ package com.drbanner.geolocation.s2.utils;
 
 public class Example {
 
-
     public static int DEFAULT_MIN_LEVEL = 1;
     public static int DEFAULT_MAX_CELLS = 9999;
     public static int DEFAULT_MAX_LEVEL = 30;
@@ -54,7 +53,7 @@ public class Example {
             "[-118.4382441, 33.9518573], [-118.4385637, 33.9517528], [-118.4388193, 33.9516509], [-118.4388931, 33.9515946], [-118.4388789, 33.9515354], [-118.4388303, 33.9514592], [-118.4385825, 33.9510964], [-118.4384432, 33.9508257], [-118.4381075, 33.9508327], [-118.4380994, 33.9506675], [-118.4383217, 33.9506656]," +
             "[-118.4375838, 33.949583], [-118.4375838, 33.949583]]]}";
 
-    public static String someGermanPlace = "{\"type\":\"GeometryCollection\",\"geometries\":[{\"type\":\"MultiPolygon\",\"coordinates\":" +
+    public static String someGermanMultiPolygonJson = "{\"type\":\"GeometryCollection\",\"geometries\":[{\"type\":\"MultiPolygon\",\"coordinates\":" +
             "[[[[13.264234200000001,52.626864500000003],[13.264962300000001,52.626528399999998],[13.265819,52.6263048]," +
             "[13.267231499999999,52.626230800000002],[13.2677824,52.626025800000001],[13.2682866,52.626004299999998]," +
             "[13.269675899999999,52.626108600000002],[13.270391200000001,52.626138500000003],[13.2710101,52.626135499999997]," +
@@ -155,6 +154,60 @@ public class Example {
             "\"type\": \"Polygon\","+
             "\"coordinates\": [ [[-0.6468672,45.7493155],[-0.6468939,45.7492196],[-0.646927,45.7491021],[-0.6465112,45.7490335],[-0.6464441,45.7493129],[-0.6468167,45.7493647],[-0.6468522,45.7493696],[-0.6468672,45.7493155]]] }}]}";
 
+    public static String pointGeoJson = "{\n" +
+            "  \"type\": \"FeatureCollection\",\n" +
+            "  \"features\": [\n" +
+            "    {\n" +
+            "      \"type\": \"Feature\",\n" +
+            "      \"properties\": {},\n" +
+            "      \"geometry\": {\n" +
+            "        \"type\": \"Point\",\n" +
+            "        \"coordinates\": [\n" +
+            "          54.140625,\n" +
+            "          54.77534585936447\n" +
+            "        ]\n" +
+            "      }\n" +
+            "    }\n" +
+            "  ]\n" +
+            "}";
 
+    public static String pointsFeatureCollectionGeoJson = "{\n" +
+            "  \"type\": \"FeatureCollection\",\n" +
+            "  \"features\": [\n" +
+            "    {\n" +
+            "      \"type\": \"Feature\",\n" +
+            "      \"properties\": {},\n" +
+            "      \"geometry\": {\n" +
+            "        \"type\": \"Point\",\n" +
+            "        \"coordinates\": [\n" +
+            "          99.84374999999999,\n" +
+            "          68.00757101804004\n" +
+            "        ]\n" +
+            "      }\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"type\": \"Feature\",\n" +
+            "      \"properties\": {},\n" +
+            "      \"geometry\": {\n" +
+            "        \"type\": \"Point\",\n" +
+            "        \"coordinates\": [\n" +
+            "          59.0625,\n" +
+            "          37.71859032558816\n" +
+            "        ]\n" +
+            "      }\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"type\": \"Feature\",\n" +
+            "      \"properties\": {},\n" +
+            "      \"geometry\": {\n" +
+            "        \"type\": \"Point\",\n" +
+            "        \"coordinates\": [\n" +
+            "          19.6875,\n" +
+            "          54.36775852406841\n" +
+            "        ]\n" +
+            "      }\n" +
+            "    }\n" +
+            "  ]\n" +
+            "}";
 
 }
