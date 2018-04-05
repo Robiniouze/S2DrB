@@ -127,23 +127,31 @@ public class GeojsonProcessor {
     @Nonnull
     public static List<GeoJsonObject> geojsonToGeojsonObject(String someJson) throws IOException, RuntimeException {
         GeoJsonObject geoJsonObject = (new ObjectMapper()).readValue(someJson, GeoJsonObject.class);
-
+        List<GeoJsonObject> geoJsonObjects = new ArrayList<>();
         if(geoJsonObject instanceof Point || geoJsonObject instanceof Polygon || geoJsonObject instanceof MultiPolygon) {
             return List.of(geoJsonObject);
         }
         else if(geoJsonObject instanceof FeatureCollection) {
-            List<GeoJsonObject> geoJsonObjects = new ArrayList<>();
             for(Feature feature : ((FeatureCollection)(geoJsonObject)).getFeatures()) {
                 GeoJsonObject currentGeoJsonObject = feature.getGeometry();
                 if(currentGeoJsonObject instanceof Point || currentGeoJsonObject instanceof Polygon || currentGeoJsonObject instanceof MultiPolygon){
                     geoJsonObjects.add(currentGeoJsonObject);
                 }
             }
-            return geoJsonObjects;
+        } else if(geoJsonObject instanceof GeometryCollection) {
+            for(GeoJsonObject geoJsonObject1 : ((GeometryCollection) geoJsonObject).getGeometries()) {
+                if(geoJsonObject1 instanceof Point || geoJsonObject1 instanceof Polygon || geoJsonObject1 instanceof MultiPolygon){
+                    geoJsonObjects.add(geoJsonObject1);
+                }
+            }
         }
         else {
             throw new RuntimeException();
         }
+        if(geoJsonObjects.isEmpty()) {
+            throw new RuntimeException();
+        }
+        return geoJsonObjects;
     }
 
     @Nonnull

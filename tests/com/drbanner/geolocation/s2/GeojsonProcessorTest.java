@@ -11,9 +11,12 @@ import java.util.List;
 
 import static com.drbanner.geolocation.s2.utils.Example.*;
 import static com.drbanner.geolocation.s2.utils.GeojsonProcessor.geojsonToGeojsonObject;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class GeojsonProcessorTest {
+
+    double epsilon = 1.0E-7;
 
     @Test
     public void testGeojsonMultiPolygonInstance() throws IOException {
@@ -38,9 +41,6 @@ public class GeojsonProcessorTest {
         assertTrue(geoJsonObjects.get(0) instanceof Point);
     }
 
-    //TODO
-    //tester une feature collection contenant plusieurs elements
-
     @Test
     public void testGeojsonPointsFeatureCollection() throws IOException, Exception {
         List<GeoJsonObject> geoJsonObjects = geojsonToGeojsonObject(pointsFeatureCollectionGeoJson);
@@ -48,6 +48,25 @@ public class GeojsonProcessorTest {
         for(GeoJsonObject geoJsonObject : geoJsonObjects) {
             assertTrue(geoJsonObject instanceof Point);
         }
+        assertEquals(99.84374999999999,((Point) (geoJsonObjects.get(0))).getCoordinates().getLongitude(),epsilon);
+        assertEquals(68.00757101804004,((Point) (geoJsonObjects.get(0))).getCoordinates().getLatitude(),epsilon);
+        assertEquals(59.0625,((Point) (geoJsonObjects.get(1))).getCoordinates().getLongitude(),epsilon);
+        assertEquals(37.71859032558816,((Point) (geoJsonObjects.get(1))).getCoordinates().getLatitude(),epsilon);
+        assertEquals(19.6875,((Point) (geoJsonObjects.get(2))).getCoordinates().getLongitude(),epsilon);
+        assertEquals(54.36775852406841,((Point) (geoJsonObjects.get(2))).getCoordinates().getLatitude(),epsilon);
     }
+
+    @Test
+    public void testGeojsonMultiPolygonSerialization() throws Exception {
+        List<GeoJsonObject> geoJsonObjects = geojsonToGeojsonObject(someGermanMultiPolygonJson);
+        assertTrue(geoJsonObjects.size()==1);
+        assertTrue(geoJsonObjects.get(0) instanceof MultiPolygon);
+    }
+
+    //TODO
+    //write tests regarding the S2CellUnion construction //and regarding the S2PolygonBuilder construction
+
+
+    
 
 }

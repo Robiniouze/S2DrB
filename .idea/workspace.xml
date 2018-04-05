@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db9d59e8-da7b-40b8-a709-e5febc6dc121" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/Main.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/S2Cell.class" afterPath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/S2Cell.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/S2Point.class" afterPath="$PROJECT_DIR$/out/production/s2-geometry-library-java/com/google/common/geometry/S2Point.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/Main.java" afterPath="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/Example.java" afterPath="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/Example.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java" afterPath="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java" afterPath="$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +30,8 @@
       <file leaf-file-name="GeojsonProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="146" column="5" lean-forward="true" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+            <state relative-caret-position="2736">
+              <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,8 +75,8 @@
       <file leaf-file-name="GeojsonProcessorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+            <state relative-caret-position="1242">
+              <caret line="69" column="4" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,8 +87,8 @@
       <file leaf-file-name="Example.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/Example.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="883">
-              <caret line="210" column="16" lean-forward="false" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
+            <state relative-caret-position="369">
+              <caret line="205" column="40" lean-forward="false" selection-start-line="205" selection-start-column="23" selection-end-line="205" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -105,16 +99,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
               <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S2Polygon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2Polygon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2520">
-              <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -144,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>contain</find>
       <find>rangeMin</find>
       <find>inner</find>
       <find>innerP</find>
@@ -172,8 +155,9 @@
       <find>someGerman</find>
       <find>DEFAULT_MAX_CELLS</find>
       <find>someMulti</find>
-      <find>polygonbuilder</find>
       <find>s2Polygon</find>
+      <find>polygonbuilder</find>
+      <find>runti</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,9 +181,9 @@
         <option value="$PROJECT_DIR$/src/com/google/common/geometry/S2Point.java" />
         <option value="$PROJECT_DIR$/src/com/google/common/geometry/S2Cell.java" />
         <option value="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/DEFAULT_MAX_LEVEL.java" />
-        <option value="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java" />
         <option value="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/Main.java" />
         <option value="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/Example.java" />
+        <option value="$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java" />
         <option value="$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java" />
       </list>
     </option>
@@ -336,7 +320,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GeojsonProcessorTest.testGeojsonPointsFeatureCollection">
+  <component name="RunManager" selected="JUnit.GeojsonProcessorTest">
     <configuration name="GeojsonProcessorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -362,7 +346,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="GeojsonProcessorTest.testGeojsonMultiPolygonInstance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GeojsonProcessorTest.testGeojsonMultiPolygonSerialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.drbanner.geolocation.s2.*" />
@@ -374,7 +358,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.drbanner.geolocation.s2" />
       <option name="MAIN_CLASS_NAME" value="com.drbanner.geolocation.s2.GeojsonProcessorTest" />
-      <option name="METHOD_NAME" value="testGeojsonMultiPolygonInstance" />
+      <option name="METHOD_NAME" value="testGeojsonMultiPolygonSerialization" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -546,17 +530,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointInstance" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonMultiPolygonInstance" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPolygonInstance" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointsFeatureCollection" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPolygonInstance" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointsFeatureCollection" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonMultiPolygonSerialization" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointsFeatureCollection" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointInstance" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPolygonInstance" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonMultiPolygonInstance" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointsFeatureCollection" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonMultiPolygonSerialization" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPointInstance" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.GeojsonProcessorTest.testGeojsonPolygonInstance" />
       </list>
     </recent_temporary>
   </component>
@@ -577,35 +561,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GeojsonProcessorTest - 2018.04.05 at 13h 44m 09s.xml">
+    <history-entry file="GeojsonProcessorTest - 2018.04.05 at 15h 09m 20s.xml">
       <configuration name="GeojsonProcessorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPointInstance - 2018.04.05 at 13h 43m 54s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPointInstance" configurationId="JUnit" />
+    <history-entry file="GeojsonProcessorTest - 2018.04.05 at 15h 19m 32s.xml">
+      <configuration name="GeojsonProcessorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPointsFeatureCollection - 2018.04.05 at 13h 52m 17s.xml">
+    <history-entry file="GeojsonProcessorTest - 2018.04.05 at 15h 23m 34s.xml">
+      <configuration name="GeojsonProcessorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GeojsonProcessorTest - 2018.04.05 at 15h 23m 43s.xml">
+      <configuration name="GeojsonProcessorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GeojsonProcessorTest - 2018.04.05 at 15h 25m 44s.xml">
+      <configuration name="GeojsonProcessorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GeojsonProcessorTest_testGeojsonMultiPolygonSerialization - 2018.04.05 at 15h 02m 25s.xml">
+      <configuration name="GeojsonProcessorTest.testGeojsonMultiPolygonSerialization" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GeojsonProcessorTest_testGeojsonMultiPolygonSerialization - 2018.04.05 at 15h 09m 12s.xml">
+      <configuration name="GeojsonProcessorTest.testGeojsonMultiPolygonSerialization" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GeojsonProcessorTest_testGeojsonMultiPolygonSerialization - 2018.04.05 at 15h 23m 40s.xml">
+      <configuration name="GeojsonProcessorTest.testGeojsonMultiPolygonSerialization" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GeojsonProcessorTest_testGeojsonPointsFeatureCollection - 2018.04.05 at 15h 14m 33s.xml">
       <configuration name="GeojsonProcessorTest.testGeojsonPointsFeatureCollection" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPointsFeatureCollection - 2018.04.05 at 13h 53m 07s.xml">
+    <history-entry file="GeojsonProcessorTest_testGeojsonPointsFeatureCollection - 2018.04.05 at 15h 18m 38s.xml">
       <configuration name="GeojsonProcessorTest.testGeojsonPointsFeatureCollection" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPolygonInstance - 2018.04.05 at 13h 31m 21s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPolygonInstance" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPolygonInstance - 2018.04.05 at 13h 33m 53s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPolygonInstance" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPolygonInstance - 2018.04.05 at 13h 34m 06s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPolygonInstance" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPolygonInstance - 2018.04.05 at 13h 35m 11s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPolygonInstance" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPolygonInstance - 2018.04.05 at 13h 35m 58s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPolygonInstance" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GeojsonProcessorTest_testGeojsonPolygonInstance - 2018.04.05 at 13h 36m 46s.xml">
-      <configuration name="GeojsonProcessorTest.testGeojsonPolygonInstance" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -618,7 +602,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47137013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4212679" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -678,22 +662,6 @@
           </properties>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java</url>
-          <line>18</line>
-          <properties class="com.drbanner.geolocation.s2.GeojsonProcessorTest" method="testGeojsonMultiPolygonInstance">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java</url>
-          <line>25</line>
-          <properties class="com.drbanner.geolocation.s2.GeojsonProcessorTest" method="testGeojsonPolygonInstance">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/google/common/geometry/S2Polygon.java</url>
           <line>155</line>
@@ -712,19 +680,18 @@
           <properties />
           <option name="timeStamp" value="53" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java</url>
+          <line>130</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="58" />
+      <option name="time" value="64" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/lib/jdk/jdk-9.0.1/lib/src.zip!/java.base/java/util/AbstractList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/com/google/common/geometry/S2RegionCovererTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1494">
@@ -1033,14 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellUnion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="28" column="10" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2PolygonBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4950">
@@ -1059,10 +1018,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/junit.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/common/geometry/S2CellUnion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="28" column="10" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/GeojsonProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="146" column="5" lean-forward="true" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+        <state relative-caret-position="2736">
+          <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1071,16 +1046,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/drbanner/geolocation/s2/utils/Example.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="883">
-          <caret line="210" column="16" lean-forward="false" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
+        <state relative-caret-position="369">
+          <caret line="205" column="40" lean-forward="false" selection-start-line="205" selection-start-column="23" selection-end-line="205" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/com/drbanner/geolocation/s2/GeojsonProcessorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        <state relative-caret-position="1242">
+          <caret line="69" column="4" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
