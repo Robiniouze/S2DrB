@@ -1,5 +1,7 @@
 package com.drbanner.geolocation.s2;
 
+import com.google.common.geometry.S2CellId;
+import com.google.common.geometry.S2CellUnion;
 import org.geojson.GeoJsonObject;
 import org.geojson.MultiPolygon;
 import org.geojson.Point;
@@ -11,6 +13,7 @@ import java.util.List;
 
 import static com.drbanner.geolocation.s2.utils.Example.*;
 import static com.drbanner.geolocation.s2.utils.GeojsonProcessor.geojsonToGeojsonObject;
+import static com.drbanner.geolocation.s2.utils.GeojsonProcessor.geojsonToS2CellUnion;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -66,7 +69,11 @@ public class GeojsonProcessorTest {
     //TODO
     //write tests regarding the S2CellUnion construction //and regarding the S2PolygonBuilder construction
 
-
-    
+    @Test
+    public void testGeojsonPointS2CellUnion() throws Exception {
+        S2CellUnion s2CellUnion = geojsonToS2CellUnion(pointGeoJson);
+        assertEquals(1,s2CellUnion.cellIds().size());
+        assertEquals(S2CellId.MAX_LEVEL,s2CellUnion.cellId(0).level());
+    }
 
 }

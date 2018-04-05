@@ -89,10 +89,9 @@ public class GeojsonProcessor {
 
     @Nonnull
     public static S2CellUnion geojsonObjectListToS2Polygon(List<GeoJsonObject> geoJsonObjects, int minLevel, int maxCells, int maxLevel) throws Exception {
-        List<S2CellUnion> s2CellUnions = new ArrayList<>();
-        if(s2CellUnions.size()==0) {
+        if(geoJsonObjects.size()==0) {
             throw new Exception();
-        } else if(s2CellUnions.size()==1) {
+        } else if(geoJsonObjects.size()==1) {
             return geojsonObjectToS2CellUnion(geoJsonObjects.get(0),minLevel,maxCells,maxLevel);
         } else {
             //build polygons
